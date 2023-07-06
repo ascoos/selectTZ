@@ -72,23 +72,12 @@ class TTimezonesHandler {
     public function getHtmlSelect(?string $selectID = null, ?array $params = null, ?string $selected = null): string 
     {        
         if (is_null($selectID)) $selectID = 'timezone-select';
-
-        //$selectID = (is_null($selectID)) ? 'timezone-select' : $selectID;
-        
-        /**
-         * If parameters have been set, such as a css class, a data-role etc, then we pass them as a string to the select tag via the $extra temporary variable.
-         */ 
+       
+        // If parameters have been set, such as a css class, a data-role etc, then we pass them as a string to the select tag via the $extra temporary variable.
         $extra = (!is_null($params) && is_array($params)) ? ' '.implode(' ', $params) : '';
         
-        /**
-         * 
-         */
         $default = (is_null($selected)) ? date_default_timezone_get() : $selected;
-        //if (is_nan($selected)) $selected = date_default_timezone_get();
 
-        /**
-         * 
-         */
         $text = '<select id="'.$selectID.'"'.$extra.'>';
         unset($extra);
 
@@ -105,10 +94,7 @@ class TTimezonesHandler {
         }
         $text .= '</select>'.PHP_EOL;
         
-        /**
-         * We free memory from variables that are no longer needed.
-         */
-
+        // We free memory from variables that are no longer needed.
         unset($default);
         unset($seltxt);
         
