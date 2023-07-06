@@ -33,10 +33,10 @@ namespace ASCOOS\CMS\KERNEL\CORE\Timezones;
  
 
 /**
- * Αυτή η κλάση είναι ένα μέρος της πλήρους βιβλιοθήκης διαχείρισης ημερομηνιών και ώρας στο ASCOOS CMS.
+ * This class is a part of the complete date and time management library of ASCOOS CMS.
  * 
- * @property    array   $timezones          Περιέχει έναν πολυδιάστατο πίνακα με τις ζώνες ώρας ανά γεωγραφική περιοχή.
- * @method      string  getHtmlSelect()     Η συνάρτηση αυτή δημιουργεί ένα HTML στοιχείο πλαισίου επιλογής για τις ζώνες ώρας.
+ * @property    array   $timezones          Contains a multidimensional table of time zones by geographic region.
+ * @method      string  getHtmlSelect()     This function creates an select list element for time zones.
  * 
  */
 class TTimezonesHandler {
@@ -60,16 +60,14 @@ class TTimezonesHandler {
 
 
     /**
-     * Η συνάρτηση αυτή δημιουργεί ένα HTML στοιχείο πλαισίου επιλογής για τις ζώνες ώρας.
+     * This function creates an dropdown select for time zones.
      * 
      * @access  public
-     * @param   string  $selectID   [NULL = 'timezone-select'] Περιέχει το ID του Select Box.
-     * @param   ?array  $params     [NULL] Ο πίνακας αυτός περιέχει διάφορες έξτρα παραμέτρους διαμόρφωσης της ετικέτας
-     *                              όπως π.χ. την ονομασία της κλάσης διαμόρφωσης του HTML Select Box, κλπ.
-     * @param   ?string $selected   Η προεπιλεγμένη ζώνη ώρας.
+     * @param   string  $selectID   [NULL = 'timezone-select'] Contains the ID of the Select Box.
+     * @param   ?array  $params     [NULL] This array contains several additional parameters such as the name of the CSS class, etc.
+     * @param   ?string $selected   The default time zone.
      * 
-     * @return string               Επιστρέφει ένα HTML Select Box, που υλοποιεί την επιλογή της ζώνης ώρας.
-     *                              Η τιμή του κάθε option είναι σε μορφή π.χ. Europe/Athens
+     * @return string               Returns an HTML dropdown Select, which implements the time zone selection. The price of each option is in the form of e.g. Europe/Athens
      */
     public function getHtmlSelect(?string $selectID = null, ?array $params = null, ?string $selected = null): string 
     {        
@@ -78,8 +76,7 @@ class TTimezonesHandler {
         //$selectID = (is_null($selectID)) ? 'timezone-select' : $selectID;
         
         /**
-         * Εάν έχουν ορισθεί παράμετροι, όπως π.χ. μια κλάση διαμόρφωσης, ένα data-role κλπ,
-         * τότε τα περνάμε ως ένα string στην ετικέτα select μέσω της προσωρινής μεταβλητής $extra.
+         * If parameters have been set, such as a css class, a data-role etc, then we pass them as a string to the select tag via the $extra temporary variable.
          */ 
         $extra = (!is_null($params) && is_array($params)) ? ' '.implode(' ', $params) : '';
         
@@ -109,7 +106,7 @@ class TTimezonesHandler {
         $text .= '</select>'.PHP_EOL;
         
         /**
-         * Απελευθερώνουμε μνήμη από αχρείαστες πλέον μεταβλητές.
+         * We free memory from variables that are no longer needed.
          */
 
         unset($default);
